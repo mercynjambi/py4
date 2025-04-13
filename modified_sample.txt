@@ -1,0 +1,28 @@
+1: def read_and_modify_file():
+2:     try:
+3:         # Ask user for input file name
+4:         input_file = input("Enter the name of the file to read: ")
+5: 
+6:         # Open and read the file
+7:         with open(input_file, 'r') as file:
+8:             content = file.readlines()
+9: 
+10:         # Modify the content (e.g., add line numbers)
+11:         modified_content = [f"{idx + 1}: {line}" for idx, line in enumerate(content)]
+12: 
+13:         # Write to a new file
+14:         output_file = "modified_" + input_file
+15:         with open(output_file, 'w') as file:
+16:             file.writelines(modified_content)
+17: 
+18:         print(f"✅ File has been successfully modified and saved as '{output_file}'.")
+19: 
+20:     except FileNotFoundError:
+21:         print("❌ Error: File not found. Please check the file name and try again.")
+22:     except IOError:
+23:         print("❌ Error: Unable to read or write to the file.")
+24:     except Exception as e:
+25:         print(f"⚠️ An unexpected error occurred: {e}")
+26: 
+27: # Run the program
+28: read_and_modify_file()
